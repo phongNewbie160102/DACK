@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập tài khoản</title>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/css/font.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center align-items-around">
+
+            <div class="col-4">                
+                <div class="content_h1">
+                    <h1 class="content_h1_text_1 mb-5">QSHIP XIN CHÀO</h1>
+                </div>
+                <img src="../assets/img/bak_2.png" class="img-fluid" alt="Responsive image">
+
+            </div>
+            <div class="col-5 mt-3 position-relative d-flex justify-content-end align-items-center">
+                <!-- Background circles -->
+                <div class="background-circle circle1"></div>
+                <div class="background-circle circle2"></div>
+                <div class="background-circle circle3"></div>
+                <!-- Form content -->
+                <div class="form-container">
+                    <h1 class="text-center header_row_login">Sign In</h1>
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label class="mb-2" for="userPhone">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="Nhập số điện thoại" required>
+                                </div>
+                            </div>                            
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label class="mb-2" for="userPassword">Mật khẩu</label>
+                                    <input type="text" class="form-control" id="userPassword" name="userPassword" placeholder="Nhập Mật khẩu" required>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <hr class="mt-3 me-5 ms-5 mb-0">
+                    <div class="mt-1">
+                        <div class="d-flex justify-content-end mt-2">                        
+                            <a class="content_h6_text" id="SignIn_link" href="/login/SignUp.html">Bạn chưa có tài khoản?</a>
+                        </div>
+                        <div class="text-center">
+                            <h6 class="content_h6_text">Hoặt đăng nhập bằng</h6>
+                        </div>
+                        <!-- Cho icon gogle, facebook từ bootstrap icon  -->
+                         <div class="text-center">
+                            <button class="btn-google">
+                                <i class="bi bi-google fa-xl"></i> Đăng nhập với Google
+                            </button>                    
+                            <button class="btn-facebook">
+                                <i class="bi bi-facebook fa-xl"></i> Đăng nhập với Facebook
+                            </button>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <!-- Bootstrap Toasts -->
+    <div class="toast-container">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <h5 class="me-auto mt-1 p-2"><i class="bi bi-check-circle-fill fa-2xl text-success"></i></h5>
+            </div>
+            <div class="toast-body mt-1">
+                Đăng nhập thành công!
+            </div>
+        </div>
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <h5 class="me-auto mt-1 p-2"><i class="bi bi-x-circle-fill fa-2xl text-danger"></i></h5>
+            </div>
+            <div class="toast-body mt-1">
+                CAPTCHA không đúng.
+            </div>
+        </div>
+    </div>
+
+ 
+    <script src="../assets/js/components.js"></script>
+</body>
+</html>

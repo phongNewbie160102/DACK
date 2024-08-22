@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .custom-select-wrapper {
+        position: relative;
+        display: inline-block;
+        user-select: none;
+    }
+    
+    .custom-select {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .custom-select-trigger {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 200px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden; 
+    }
+    
+    .custom-select-trigger .arrow {
+        width: 0;
+        height: 0;
+        border: solid 6px transparent;
+        border-color: #333 transparent transparent transparent;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .custom-select.open .custom-select-trigger .arrow  {
+        transform: rotate(180deg);
+    }
+    
+    .custom-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 1;
+        max-height: 200px;  
+        overflow-y: auto;  
+    }
+    
+    .custom-select.open .custom-options {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .custom-option {
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: block;
+        border-bottom: 1px solid #ddd; 
+        opacity: 0;
+        transform: translateY(10px);  
+        animation: fadeIn 0.3s forwards;
+    }
+    
+    .custom-option:last-child {
+        border-bottom: none;  
+    }
+    
+    .custom-option:hover {
+        background-color: #e7eaeb;
+    }
+    
+    .custom-option.selected {
+        background-color: #ecedeb;  
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+</style>
+</head>
+<body>
+    <div class="custom-select-wrapper">
+        <div class="custom-select">
+            <div class="custom-select-trigger"><span>Choose an option</span>
+                <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+                <span class="custom-option selected" data-value="tesla">Tesla</span>
+                <span class="custom-option" data-value="volvo">Volvo</span>
+                <span class="custom-option" data-value="mercedes">Mercedes</span>
+                <span class="custom-option" data-value="audi">Audi</span>
+            </div>
+        </div>
+    </div>
+ 
+<script>
+    
+    function initializeComponents() {
+        setupDropdowns();
+    }
+    
+    function setupDropdowns() {
+        const selectWrappers = document.querySelectorAll(".custom-select");
+    
+        selectWrappers.forEach(selectWrapper => {
+            const trigger = selectWrapper.querySelector(".custom-select-trigger");
+            const options = selectWrapper.querySelectorAll(".custom-option");
+            const selectedOption = selectWrapper.querySelector(".custom-option.selected");
+    
+            if (selectedOption) {
+                trigger.querySelector("span").textContent = selectedOption.textContent;
+            }
+    
+            trigger.addEventListener("click", function () {
+                const isOpen = selectWrapper.classList.contains("open");
+                selectWrapper.classList.toggle("open");
+    
+                options.forEach((option, index) => {
+                    option.style.animationDelay = `${index * 0.1}s`; 
+                    option.style.opacity = isOpen ? 0 : 1;
+                });
+            });
+    
+            selectWrapper.addEventListener("click", function (event) {
+                if (event.target.classList.contains("custom-option")) {
+                    const option = event.target;
+                    trigger.querySelector("span").textContent = option.textContent;
+                    selectWrapper.querySelectorAll(".custom-option.selected").forEach(opt => {
+                        opt.classList.remove("selected");
+                    });
+                    option.classList.add("selected");
+                    selectWrapper.classList.remove("open");
+                }
+            });
+        });
+    
+        document.addEventListener("click", function (event) {
+            if (!event.target.closest(".custom-select")) {
+                selectWrappers.forEach(selectWrapper => {
+                    selectWrapper.classList.remove("open");
+                });
+            }
+        });
+    }
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+      /* Custom FONT */
+      @font-face {
+        font-family: 'Samsung One 400';
+        src: url('../font/SamsungOne-400.ttf') format('woff2'),
+            url('../font/SamsungOne-400.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Samsung One 700';
+        src: url('../font/SamsungOne-700.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Samsung Sharp Sans Bold';
+        src: url('../font/SamsungSharpSans-Bold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'SamsungSharpSans-Bold_SMCPS';
+        src: url('../font/iCiel-SamsungSharpSans-Bold_SMCPS.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+    .header_row_login{
+        font-family: 'SamsungSharpSans-Bold_SMCPS', Arial, sans-serif;
+        font-size: 40px;
+    }
+    .content_h1_text,.content_h1_text_1,.userBtnSubmit{
+        font-family: 'SamsungSharpSans-Bold_SMCPS', Arial, sans-serif;
+    }
+    label,span {
+        font-family: 'Samsung One 700', Arial, sans-serif;
+    }
+    select, option,input,p, text {
+        font-family: 'Samsung One 400', Arial, sans-serif;
+    }
+    .content_h6_text{
+        font-family: 'Samsung One 400', Arial, sans-serif;
+    }
